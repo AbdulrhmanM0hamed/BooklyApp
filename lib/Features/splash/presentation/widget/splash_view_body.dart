@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bookly_app/Features/splash/presentation/home_view.dart';
+import 'package:bookly_app/Features/home/presentation/view/home_view.dart';
 import 'package:bookly_app/Features/splash/presentation/widget/sliding_logo.dart';
 
 
@@ -36,13 +36,11 @@ Timer? _timer;
    Navigator.push(context, MaterialPageRoute(builder: (context) =>const HomeView()),);
   }
   @override
+
   void initState() {
     super.initState();
     _setTimer();
-    super.initState();
-    animationController = AnimationController(vsync: this , duration: const Duration(seconds: constantManger.durationAnimation) );
-    slidingAnimation = Tween <Offset>(begin: const Offset(0, 2), end: const Offset(0, 0) ).animate(animationController);
-    animationController.forward();
+    animationFunction();
   }
   @override
   void dispose() {
@@ -61,6 +59,13 @@ Timer? _timer;
         ],
       )
     );
+  }
+
+    void animationFunction() {
+    animationController = AnimationController(vsync: this , duration: const Duration(seconds: constantManger.durationAnimation) );
+    slidingAnimation = Tween <Offset>(begin: const Offset(0, 2), end: const Offset(0, 0) ).animate(animationController);
+    animationController.forward();
+    
   }
 }
 
