@@ -26,7 +26,7 @@ class SlidingLogo extends StatelessWidget {
               const SizedBox(
          height: AppPadding.p8,
        ),
-         Text(AppString.readFreBooks ,textAlign: TextAlign.center , style: getBoldStyle( color: ColorManger.white, fontSize: FontSize.size14))
+         Text(AppString.readFreBooks ,textAlign: TextAlign.center , style: getBoldStyle( color: ColorManger.white, fontSize: FontSize.size14 , fontFamily: "GT Sectra Fine"))
             ],
          )
        ),

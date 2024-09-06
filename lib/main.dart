@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: getApplicationTheme(),
-      
+      theme: getApplicationTheme() , 
+    
       home:const SplashView(),
       
     );

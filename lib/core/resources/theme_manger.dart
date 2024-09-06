@@ -15,7 +15,8 @@ ThemeData getApplicationTheme() {
     primaryColorDark: ColorManger.darkprimary,
     disabledColor: ColorManger.grey1,
     splashColor: ColorManger.lightprimary,
-    //cardView theme
+    fontFamily: 'GT Sectra Fine',
+    
 
     cardTheme: CardTheme(
       color: ColorManger.white,
@@ -52,6 +53,7 @@ ThemeData getApplicationTheme() {
     )),
 
     textTheme: TextTheme(
+      
         headlineLarge: getSemiBoldStyle(
             fontSize: FontSize.size16, color: ColorManger.darkGrey),
         titleMedium: getMeduimStyle(

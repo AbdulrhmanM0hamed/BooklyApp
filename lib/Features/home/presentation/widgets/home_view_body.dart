@@ -4,6 +4,7 @@ import 'package:bookly_app/Features/home/presentation/widgets/feature_books_list
 import 'package:bookly_app/core/resources/assets_manger.dart';
 import 'package:bookly_app/core/resources/color_manger.dart';
 import 'package:bookly_app/core/resources/font_manger.dart';
+import 'package:bookly_app/core/resources/string_manger.dart';
 import 'package:bookly_app/core/resources/styles_manger.dart';
 import 'package:bookly_app/core/resources/values_manger.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,20 +15,20 @@ class HomeViewBody extends StatelessWidget {
   HomeViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppPadding.p18 , vertical: AppPadding.p30),
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: AppPadding.p18 , vertical: AppPadding.p30),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const CustomAppBar() , 
-         const FeatureBooksListView () , 
-         const SizedBox(
+         CustomAppBar() , 
+          FeatureBooksListView () , 
+          SizedBox(
             height: AppSize.s30,
           ), 
           Text(
-            "Best saller" , style: getBoldStyle(fontSize:FontSize.size20, color: ColorManger.white),
-           
-          )
+            AppString.bestSaller, style: getSemiBoldStyle(color: ColorManger.white , fontSize: FontSize.size18),
+          ),
+           BestSallerListViewItem () 
       
         ],
       ),
@@ -35,3 +36,22 @@ class HomeViewBody extends StatelessWidget {
   }
 }
 
+class BestSallerListViewItem extends StatelessWidget {
+  const BestSallerListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: AppSize.s150,
+      child: AspectRatio(  // to make widget responsive
+        aspectRatio: AppSize.s2_6/AppSize.s4,  // ابعاد العرض بالنسبة للطول 
+        child: Container(
+          decoration:  BoxDecoration(
+            borderRadius: BorderRadius.circular(AppSize.s8),
+            image: const DecorationImage(image: AssetImage(ImageAssets.testImage) ,  fit: BoxFit.fill )
+          ),
+        ),
+      ),
+    );
+  }
+}
