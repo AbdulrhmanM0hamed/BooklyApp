@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FontConstant {
-  static const String fontName = 'Montserrat';
+  static const String fontName = 'GT Sectra Fine Regular';
 }
 
 class FontWeightManger {

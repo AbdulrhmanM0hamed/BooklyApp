@@ -10,4 +10,5 @@ class ImageAssets {
   static const String rightArrowIc = "$imagePath/right_arrow_ic.svg";
   static const String hollowCircleIc = "$imagePath/hollow_cirlce_ic.svg";
   static const String solidCircleIc = "$imagePath/solid_circle_ic.svg";
+  static const String testImage  = "assets/images/test_image.png" ;
 }
