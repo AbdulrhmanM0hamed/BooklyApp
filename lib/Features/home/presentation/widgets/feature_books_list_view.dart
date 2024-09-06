@@ -7,14 +7,14 @@ class FeatureBooksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-       height: MediaQuery.of(context).size.height * .25,
-      child: ListView.builder(scrollDirection: Axis.horizontal ,  itemBuilder: (context, index) => 
-      
-    const  Padding(
-        padding:  EdgeInsets.symmetric(horizontal: AppPadding.p8),
-        child:   CustomListViewItem(),
-      )
-      ,),
+      height: MediaQuery.of(context).size.height * .25,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) => const Padding(
+          padding:  EdgeInsets.only(right: AppPadding.p12),
+          child:  CustomListViewItem(),
+        ),
+      ),
     );
   }
 }
