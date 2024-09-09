@@ -92,18 +92,14 @@ class BestSallerListViewItem extends StatelessWidget {
                   Text(
                     "19.99 €",
                     style: getBoldStyle(
-                        fontSize: FontSize.size22,
+                        fontSize: FontSize.size20,
                         color: ColorManger.white,
                         fontFamily: FontConstant.montserrat),
                   ),
                   const SizedBox(
                     width: 40,
                   ),
-                  const Icon(
-                    Icons.star,
-                    color: Colors.yellow,
-                    size: AppSize.s20,
-                  ),
+                  BookingRate(),
                   const SizedBox(
                     width: 5,
                   ),
@@ -127,6 +123,21 @@ class BestSallerListViewItem extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class BookingRate extends StatelessWidget {
+  const BookingRate({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Icon(
+      Icons.star,
+      color: Colors.yellow,
+      size: AppSize.s20,
     );
   }
 }
