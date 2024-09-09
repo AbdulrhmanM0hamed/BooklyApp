@@ -30,7 +30,7 @@ ThemeData getApplicationTheme() {
         elevation: AppSize.s4,
         shadowColor: ColorManger.lightprimary,
         titleTextStyle: getRegularStyle(
-            fontSize: FontSize.size16, color: ColorManger.white)),
+            fontSize: FontSize.size16, color: ColorManger.white , fontFamily: 'Montserrat')),
 
     //button theme
 
@@ -49,43 +49,11 @@ ThemeData getApplicationTheme() {
           borderRadius: BorderRadius.circular(AppSize.s16)),
       backgroundColor: ColorManger.primary,
       textStyle:
-          getRegularStyle(color: ColorManger.white, fontSize: FontSize.size17),
+          getRegularStyle(color: ColorManger.white, fontSize: FontSize.size17 , fontFamily: 'Montserrat'),
     )),
 
-    textTheme: TextTheme(
-      
-        headlineLarge: getSemiBoldStyle(
-            fontSize: FontSize.size16, color: ColorManger.darkGrey),
-        titleMedium: getMeduimStyle(
-            color: ColorManger.primary, fontSize: FontSize.size16),
-        headlineMedium: getMeduimStyle(
-            color: ColorManger.darkGrey, fontSize: FontSize.size14),
-        bodyLarge: getRegularStyle(color: ColorManger.grey1),
-        bodySmall: getRegularStyle(color: ColorManger.grey),
-        displayLarge: getLightStyle(
-            color: ColorManger.darkGrey, fontSize: FontSize.size16)),
+   
 
-    inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.all(AppPadding.p8),
-      hintStyle:
-          getRegularStyle(color: ColorManger.grey, fontSize: FontSize.size14),
-      labelStyle:
-          getMeduimStyle(color: ColorManger.grey, fontSize: FontSize.size14),
-      errorStyle: getRegularStyle(color: ColorManger.error),
-      enabledBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: ColorManger.primary, width: AppSize.s1_5),
-          borderRadius: BorderRadius.circular(AppSize.s8)),
-      focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManger.grey, width: AppSize.s1_5),
-          borderRadius: BorderRadius.circular(AppSize.s8)),
-      errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManger.error, width: AppSize.s1_5),
-          borderRadius: BorderRadius.circular(AppSize.s8)),
-      focusedErrorBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: ColorManger.primary, width: AppSize.s1_5),
-          borderRadius: BorderRadius.circular(AppSize.s8)),
-    ),
+   
   );
 }
