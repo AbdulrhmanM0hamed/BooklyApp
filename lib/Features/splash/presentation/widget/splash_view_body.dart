@@ -5,11 +5,13 @@ import 'package:bookly_app/Features/splash/presentation/widget/sliding_logo.dart
 
 
 import 'package:bookly_app/core/resources/constants_manger.dart';
+import 'package:bookly_app/core/resources/route_manger.dart';
 
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 
 class SplashViewBody extends StatefulWidget {
@@ -33,7 +35,7 @@ Timer? _timer;
    }
 
   _goNext() {
-   Navigator.push(context, MaterialPageRoute(builder: (context) =>const HomeView()),);
+     context.go(RouteManger.homeview);
   }
   @override
 
