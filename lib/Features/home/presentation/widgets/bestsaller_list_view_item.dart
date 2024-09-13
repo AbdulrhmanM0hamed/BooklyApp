@@ -7,6 +7,7 @@ import 'package:bookly_app/core/resources/string_manger.dart';
 import 'package:bookly_app/core/resources/styles_manger.dart';
 import 'package:bookly_app/core/resources/values_manger.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSallerListViewItem extends StatelessWidget {
@@ -24,7 +25,8 @@ class BestSallerListViewItem extends StatelessWidget {
           children: [
             AspectRatio(
               // to make widget responsive
-              aspectRatio: AppSize.s2_6 / AppSize.s4, // ابعاد العرض بالنسبة للطول
+              aspectRatio:
+                  AppSize.s2_6 / AppSize.s4, // ابعاد العرض بالنسبة للطول
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(AppSize.s8),
@@ -68,24 +70,7 @@ class BestSallerListViewItem extends StatelessWidget {
                     const SizedBox(
                       width: 40,
                     ),
-                    BookingRate(),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "4.8",
-                      style: getBoldStyle(
-                          fontSize: FontSize.size20,
-                          color: ColorManger.white,
-                          fontFamily: FontConstant.montserrat),
-                    ),
-                    Text(
-                      "(2390)",
-                      style: getBoldStyle(
-                          fontSize: FontSize.size16,
-                          color: ColorManger.grey1,
-                          fontFamily: FontConstant.montserrat),
-                    ),
+                   BookingRate()
                   ],
                 ),
               ],
@@ -96,4 +81,5 @@ class BestSallerListViewItem extends StatelessWidget {
     );
   }
 }
+
 
