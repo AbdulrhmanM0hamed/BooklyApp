@@ -11,13 +11,13 @@ class BookingRate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
         mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
+      children:  [
+       const Icon(
           Icons.star,
           color: Colors.yellow,
           size: AppSize.s20,
         ),
-        SizedBox(
+     const   SizedBox(
           width: 5,
         ),
         Text(
@@ -27,9 +27,10 @@ class BookingRate extends StatelessWidget {
               color: ColorManger.white,
               fontFamily: FontConstant.montserrat),
         ),
+      const  SizedBox(width: AppMargin.m5,),
         Text(
           "(2390)",
-          style: getBoldStyle(
+          style: getSemiBoldStyle(
               fontSize: FontSize.size16,
               color: ColorManger.grey1,
               fontFamily: FontConstant.montserrat),

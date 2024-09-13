@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:bookly_app/Features/home/presentation/view/home_view.dart';
 import 'package:bookly_app/Features/splash/presentation/widget/sliding_logo.dart';
 
 
@@ -10,7 +9,6 @@ import 'package:bookly_app/core/resources/route_manger.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 
