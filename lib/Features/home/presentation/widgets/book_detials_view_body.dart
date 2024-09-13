@@ -1,5 +1,10 @@
+import 'dart:ui';
+
 import 'package:bookly_app/Features/home/presentation/widgets/custom_bookin_details_appbar.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/custom_list_view_item.dart';
+import 'package:bookly_app/core/resources/color_manger.dart';
+import 'package:bookly_app/core/resources/font_manger.dart';
+import 'package:bookly_app/core/resources/styles_manger.dart';
 import 'package:bookly_app/core/resources/values_manger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +22,12 @@ class BookDetailsViewBody extends StatelessWidget {
             children: [
              const CustomBookinDetailsAppBar() , 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*.18 , vertical: 50),
+                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*.2 , right: MediaQuery.of(context).size.width*.2 , top: 50  , bottom: 30),
                 child: const CustomBookItem(),
-              )
+              ),
+              Text("The Jungle Book" , style: getSemiBoldStyle(color: ColorManger.white, fontFamily: FontConstant.gT_Sectra_Fine , fontSize: FontSize.size30),),
+             const SizedBox(height: 1,),
+              Text("Rudyard Kipling" , style: getSemiBoldStyle(color: ColorManger.grey1, fontFamily: FontConstant.montserrat , fontSize: FontSize.size20 , fontStyle: FontStyle.italic),)
             ],
         ),
       ),

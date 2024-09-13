@@ -1,24 +1,27 @@
 import 'package:bookly_app/core/resources/font_manger.dart';
 import 'package:flutter/material.dart';
 
-TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color , String fontfamily ) {
+TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color , String fontfamily , FontStyle fontStyle ) {
   return TextStyle(
       fontSize: fontSize,
       color: color,
       fontWeight: fontWeight,
-      fontFamily: fontfamily
+      fontFamily: fontfamily , 
+      fontStyle : fontStyle
       );
 }
 
-//Regular style
+
 
 TextStyle getRegularStyle({
   double fontSize = FontSize.size12,
   required Color color,
-  required String fontFamily, // اجعل fontFamily مطلوبًا
+  required String fontFamily, 
+  FontStyle? fontStyle
+   
 }) {
   return _getTextStyle(
-    fontSize, FontWeightManger.Regular, color, fontFamily,
+    fontSize, FontWeightManger.Regular, color, fontFamily, fontStyle ?? FontStyle.normal 
   );
 }
 
@@ -26,10 +29,11 @@ TextStyle getRegularStyle({
 TextStyle getMediumStyle({
   double fontSize = FontSize.size12,
   required Color color,
-  required String fontFamily, // اجعل fontFamily مطلوبًا
+  required String fontFamily, 
+   FontStyle? fontStyle
 }) {
   return _getTextStyle(
-    fontSize, FontWeightManger.Medium, color, fontFamily,
+    fontSize, FontWeightManger.Medium, color, fontFamily,fontStyle ?? FontStyle.normal 
   );
 }
 
@@ -37,10 +41,11 @@ TextStyle getMediumStyle({
 TextStyle getLightStyle({
   double fontSize = FontSize.size12,
   required Color color,
-  required String fontFamily, // اجعل fontFamily مطلوبًا
+  required String fontFamily, 
+   FontStyle? fontStyle
 }) {
   return _getTextStyle(
-    fontSize, FontWeightManger.Light, color, fontFamily,
+    fontSize, FontWeightManger.Light, color, fontFamily,fontStyle ?? FontStyle.normal 
   );
 }
 
@@ -48,10 +53,11 @@ TextStyle getLightStyle({
 TextStyle getBoldStyle({
   double fontSize = FontSize.size12,
   required Color color,
-  required String fontFamily, // اجعل fontFamily مطلوبًا
+  required String fontFamily,// اجعل fontFamily مطلوبًا
+   FontStyle? fontStyle 
 }) {
   return _getTextStyle(
-    fontSize, FontWeightManger.Bold, color, fontFamily,
+    fontSize, FontWeightManger.Bold, color, fontFamily,fontStyle ?? FontStyle.normal 
   );
 }
 
@@ -59,9 +65,10 @@ TextStyle getBoldStyle({
 TextStyle getSemiBoldStyle({
   double fontSize = FontSize.size12,
   required Color color,
-  required String fontFamily, // اجعل fontFamily مطلوبًا
+  required String fontFamily,
+   FontStyle? fontStyle  // اجعل fontFamily مطلوبًا
 }) {
   return _getTextStyle(
-    fontSize, FontWeightManger.SemiBold, color, fontFamily,
+    fontSize, FontWeightManger.SemiBold, color, fontFamily,fontStyle ?? FontStyle.normal 
   );
 }

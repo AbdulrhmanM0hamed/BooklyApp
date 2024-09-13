@@ -12,7 +12,6 @@ class CustomBookItem extends StatelessWidget {
       child: Container(
         decoration:  BoxDecoration(
           borderRadius: BorderRadius.circular(AppSize.s16),
-          
           image: const DecorationImage(image: AssetImage(ImageAssets.testImage) ,  fit: BoxFit.fill )
         ),
       ),
