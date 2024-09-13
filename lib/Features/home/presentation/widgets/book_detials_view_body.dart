@@ -55,11 +55,11 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             const BookingRate(),
             const SizedBox(
-              height: AppSize.s30,
+              height: AppSize.s20,
             ),
             const BooksAction(),
             const SizedBox(
-              height: 40,
+              height: AppSize.s40,
             ),
              Align(
                 alignment: Alignment.topLeft,
