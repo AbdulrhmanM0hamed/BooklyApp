@@ -1,5 +1,5 @@
 import 'package:bookly_app/Features/home/presentation/widgets/booking_rate.dart';
-import 'package:bookly_app/core/resources/assets_manger.dart';
+import 'package:bookly_app/Features/home/presentation/widgets/image_Cart.dart';
 import 'package:bookly_app/core/resources/color_manger.dart';
 import 'package:bookly_app/core/resources/font_manger.dart';
 import 'package:bookly_app/core/resources/route_manger.dart';
@@ -23,18 +23,7 @@ class BestSallerListViewItem extends StatelessWidget {
         height: AppSize.s150,
         child: Row(
           children: [
-            AspectRatio(
-              // to make widget responsive
-              aspectRatio:
-                  AppSize.s2_6 / AppSize.s4, // ابعاد العرض بالنسبة للطول
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppSize.s8),
-                    image: const DecorationImage(
-                        image: AssetImage(ImageAssets.testImage),
-                        fit: BoxFit.fill)),
-              ),
-            ),
+            const ImageCart(),
             const SizedBox(width: AppMargin.m20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,5 +70,7 @@ class BestSallerListViewItem extends StatelessWidget {
     );
   }
 }
+
+
 
 
