@@ -3,12 +3,10 @@ import 'package:bookly_app/Features/home/presentation/widgets/books_actions.dart
 import 'package:bookly_app/Features/home/presentation/widgets/custom_bookin_details_appbar.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/custom_list_view_item.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/detials_list_view_item.dart';
-import 'package:bookly_app/Features/home/presentation/widgets/image_Cart.dart';
 import 'package:bookly_app/core/resources/color_manger.dart';
 import 'package:bookly_app/core/resources/font_manger.dart';
 import 'package:bookly_app/core/resources/styles_manger.dart';
 import 'package:bookly_app/core/resources/values_manger.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

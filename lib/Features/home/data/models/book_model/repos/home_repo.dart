@@ -6,5 +6,6 @@ abstract class HomeRepo
 {
   Future<Either<Failuer ,List<BookModel>>> fetchNewestBooks();
   Future<Either<Failuer ,List<BookModel>>> fetchFutureBooks();
+
  
 }
