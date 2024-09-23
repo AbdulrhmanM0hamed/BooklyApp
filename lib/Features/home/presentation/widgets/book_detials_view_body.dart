@@ -28,7 +28,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   right: MediaQuery.of(context).size.width * .2,
                   top: 20,
                   bottom: 20),
-              child: const CustomBookItem(),
+              child: const CustomBookItem(urlImage: "https://th.bing.com/th/id/R.39a0d647e1758c3224143ee90d78c07d?rik=c1tD2Y5XzA0Eaw&pid=ImgRaw&r=0",),
             ),
             Text(
               "The Jungle Book",

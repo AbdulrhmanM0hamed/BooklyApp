@@ -7,19 +7,21 @@ part 'feature_books_state.dart';
 
 class FeatureBooksCubit extends Cubit<FeatureBooksState> {
   FeatureBooksCubit(this.homeRepo) : super(FeatureBooksInitial());
-  final HomeRepo homeRepo ;
-  
-  Future<void> fetchFutureBooks() async{
+  final HomeRepo homeRepo;
+
+  Future<void> fetchFutureBooks() async {
     emit(FeatureBooksLoading());
-     var result = await homeRepo.fetchFutureBooks()  ;
- 
-     result.fold((failure) {
-      emit(FeatureBooksFailure(errMessage: failure.errMessage)) ;
+    var result = await homeRepo.fetchFutureBooks();
+    print(result);  // تأكد من طباعة النتيجة للتحقق
 
-     }, (books) {
-      FeatureBooksSuccess(books: books) ;
-     }) ; 
-
+    result.fold(
+      (failure) {
+        emit(FeatureBooksFailure(errMessage: failure.errMessage));
+      },
+      (books) {
+        // هنا يجب استخدام emit لإرسال حالة النجاح
+        emit(FeatureBooksSuccess(books: books));
+      },
+    );
   }
-
 }

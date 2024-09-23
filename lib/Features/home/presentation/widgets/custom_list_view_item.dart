@@ -3,8 +3,8 @@ import 'package:bookly_app/core/resources/values_manger.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookItem extends StatelessWidget {
-  const CustomBookItem ({super.key});
-
+  const CustomBookItem ({super.key, required this.urlImage});
+   final String urlImage;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(  // to make widget responsive
@@ -12,7 +12,7 @@ class CustomBookItem extends StatelessWidget {
       child: Container(
         decoration:  BoxDecoration(
           borderRadius: BorderRadius.circular(AppSize.s16),
-          image: const DecorationImage(image: AssetImage(ImageAssets.testImage) ,  fit: BoxFit.fill )
+          image:  DecorationImage(image: NetworkImage(urlImage) ,  fit: BoxFit.fill )
         ),
       ),
     );
