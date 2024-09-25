@@ -32,7 +32,7 @@ try {
   @override
   Future<Either<Failuer, List<BookModel>>> fetchNewestBooks() async {
     try {
-      final data = await apiService.get(endpoint: 'volumes?q=subject:programming&sorting=newest&filtering=free-ebooks');
+      final data = await apiService.get(endpoint: 'volumes?q=subject:programming&filtering=free-ebooks');
       if (data['items'] != null) {
         List<BookModel> books = (data['items'] as List).map((item) => BookModel.fromJson(item)).toList();
         return Right(books);

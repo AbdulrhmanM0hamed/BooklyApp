@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bookly_app/Features/home/presentation/view_models/cubit/feature_books/feature_books_cubit.dart';
+import 'package:bookly_app/Features/home/presentation/view_models/cubit/newest_books/newest_books_cubit.dart';
 import 'package:bookly_app/Features/splash/presentation/widget/sliding_logo.dart';
 
 
@@ -42,7 +43,13 @@ Timer? _timer;
     super.initState();
     _setTimer();
     animationFunction();
+     BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
     BlocProvider.of<FeatureBooksCubit>(context).fetchFutureBooks();
+
+
+          
+
+
 
   }
   @override

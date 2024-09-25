@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/booking_rate.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/image_Cart.dart';
 import 'package:bookly_app/core/resources/color_manger.dart';
@@ -11,19 +13,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSallerListViewItem extends StatelessWidget {
-  const BestSallerListViewItem({super.key});
+  const BestSallerListViewItem({super.key, required this.bookModel});
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(RouteManger.detials);
+        context.go(RouteManger.detials , extra: bookModel);
       },
       child: SizedBox(
         height: AppSize.s150,
         child: Row(
           children: [
-            const ImageCart(),
+            CustomBookImage(
+                imageUrl: bookModel.volumeInfo.imageLinks.thumbnail ?? ''),
             const SizedBox(width: AppMargin.m20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,16 +40,19 @@ class BestSallerListViewItem extends StatelessWidget {
                         color: ColorManger.white,
                         fontFamily: FontConstant.gT_Sectra_Fine,
                         fontSize: FontSize.size20),
-                    AppString.harryPotter,
+                    bookModel.volumeInfo.title,
                     maxLines: 2,
                   ),
                 ),
                 Text(
-                  "J.k Rowlling",
+                  bookModel.volumeInfo.authors![0],
+                  maxLines: 1,
+                   overflow: TextOverflow.ellipsis,                 // الحد الأدنى لحجم الخط
                   style: getBoldStyle(
-                      fontSize: FontSize.size16,
-                      color: ColorManger.grey1,
-                      fontFamily: FontConstant.gT_Sectra_Fine),
+                    fontSize: FontSize.size16,
+                    color: ColorManger.grey1,
+                    fontFamily: FontConstant.gT_Sectra_Fine,
+                  ),
                 ),
                 Row(
                   children: [
@@ -59,7 +66,10 @@ class BestSallerListViewItem extends StatelessWidget {
                     const SizedBox(
                       width: 40,
                     ),
-                   BookingRate()
+                    BookingRate(
+                     rating: bookModel.volumeInfo.averageRating?.round() ?? 0,
+                     count:bookModel.volumeInfo.ratingsCount ?? 0, 
+                    )
                   ],
                 ),
               ],
@@ -70,7 +80,3 @@ class BestSallerListViewItem extends StatelessWidget {
     );
   }
 }
-
-
-
-

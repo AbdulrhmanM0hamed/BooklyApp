@@ -1,125 +1,138 @@
 import 'package:equatable/equatable.dart';
-
 import 'image_links.dart';
 import 'industry_identifier.dart';
 import 'panelization_summary.dart';
 import 'reading_modes.dart';
 
 class VolumeInfo extends Equatable {
-	final String? title;
-	final List<String>? authors;
-	final String? publisher;
-	final String? publishedDate;
-	final String? description;
-	final List<IndustryIdentifier>? industryIdentifiers;
-	final ReadingModes? readingModes;
-	final int? pageCount;
-	final String? printType;
-	final List<String>? categories;
-	final String? maturityRating;
-	final bool? allowAnonLogging;
-	final String? contentVersion;
-	final PanelizationSummary? panelizationSummary;
-	final  ImageLinks imageLinks;
-	final String? language;
-	final String? previewLink;
-	final String? infoLink;
-	final String? canonicalVolumeLink;
+  final String title;
+  final List<String> authors;
+  final String? publisher;
+  final String? publishedDate;
+  final String? description;
+  final List<IndustryIdentifier>? industryIdentifiers;
+  final ReadingModes? readingModes;
+  final int? pageCount;
+  final String? printType;
+  final List<String>? categories;
+  final String? maturityRating;
+  final bool? allowAnonLogging;
+  final String? contentVersion;
+  final PanelizationSummary? panelizationSummary;
+  final ImageLinks imageLinks;
+  final String? language;
+  final String? previewLink;
+  final String? infoLink;
+  final String? canonicalVolumeLink;
+  final double? averageRating; // إضافة متوسط التقييم
+  final int? ratingsCount; // إضافة عدد التقييمات
 
-	const VolumeInfo({
-		this.title, 
-		this.authors, 
-		this.publisher, 
-		this.publishedDate, 
-		this.description, 
-		this.industryIdentifiers, 
-		this.readingModes, 
-		this.pageCount, 
-		this.printType, 
-		this.categories, 
-		this.maturityRating, 
-		this.allowAnonLogging, 
-		this.contentVersion, 
-		this.panelizationSummary, 
-	required this.imageLinks, 
-		this.language, 
-		this.previewLink, 
-		this.infoLink, 
-		this.canonicalVolumeLink, 
-	});
+  const VolumeInfo({
+    required this.title,
+    required this.authors,
+    this.publisher,
+    this.publishedDate,
+    this.description,
+    this.industryIdentifiers,
+    this.readingModes,
+    this.pageCount,
+    this.printType,
+    this.categories,
+    this.maturityRating,
+    this.allowAnonLogging,
+    this.contentVersion,
+    this.panelizationSummary,
+    required this.imageLinks,
+    this.language,
+    this.previewLink,
+    this.infoLink,
+    this.canonicalVolumeLink,
+    this.averageRating, // إضافة إلى الـ constructor
+    this.ratingsCount, // إضافة إلى الـ constructor
+  });
 
-	factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
-				title: json['title'] as String?,
-				authors: (json['authors'] as List<dynamic>?)?.cast(),
-				publisher: json['publisher'] as String?,
-				publishedDate: json['publishedDate'] as String?,
-				description: json['description'] as String?,
-				industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
-						?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
-						.toList(),
-				readingModes: json['readingModes'] == null
-						? null
-						: ReadingModes.fromJson(json['readingModes'] as Map<String, dynamic>),
-				pageCount: json['pageCount'] as int?,
-				printType: json['printType'] as String?,
-				categories: (json['categories'] as List<dynamic>?)?.cast(),
-				maturityRating: json['maturityRating'] as String?,
-				allowAnonLogging: json['allowAnonLogging'] as bool?,
-				contentVersion: json['contentVersion'] as String?,
-				panelizationSummary: json['panelizationSummary'] == null
-						? null
-						: PanelizationSummary.fromJson(json['panelizationSummary'] as Map<String, dynamic>),
-				imageLinks:  ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
-				language: json['language'] as String?,
-				previewLink: json['previewLink'] as String?,
-				infoLink: json['infoLink'] as String?,
-				canonicalVolumeLink: json['canonicalVolumeLink'] as String?,
-			);
+  factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
+        title: json['title'] as String,
+        authors: (json['authors'] as List<dynamic>).cast<String>(),
+        publisher: json['publisher'] as String?,
+        publishedDate: json['publishedDate'] as String?,
+        description: json['description'] as String?,
+        industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
+            ?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        readingModes: json['readingModes'] == null
+            ? null
+            : ReadingModes.fromJson(
+                json['readingModes'] as Map<String, dynamic>),
+        pageCount: json['pageCount'] as int?,
+        printType: json['printType'] as String?,
+        categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
+        maturityRating: json['maturityRating'] as String?,
+        allowAnonLogging: json['allowAnonLogging'] as bool?,
+        contentVersion: json['contentVersion'] as String?,
+        panelizationSummary: json['panelizationSummary'] == null
+            ? null
+            : PanelizationSummary.fromJson(
+                json['panelizationSummary'] as Map<String, dynamic>),
+        imageLinks:
+            ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+        language: json['language'] as String?,
+        previewLink: json['previewLink'] as String?,
+        infoLink: json['infoLink'] as String?,
+        canonicalVolumeLink: json['canonicalVolumeLink'] as String?,
+        averageRating: (json['averageRating'] as num?)?.toDouble(), // قراءة متوسط التقييم
+        ratingsCount: json['ratingsCount'] as int?, // قراءة عدد التقييمات
+      );
 
-	Map<String, dynamic> toJson() => {
-				'title': title,
-				'authors': authors,
-				'publisher': publisher,
-				'publishedDate': publishedDate,
-				'description': description,
-				'industryIdentifiers': industryIdentifiers?.map((e) => e.toJson()).toList(),
-				'readingModes': readingModes?.toJson(),
-				'pageCount': pageCount,
-				'printType': printType,
-				'categories': categories,
-				'maturityRating': maturityRating,
-				'allowAnonLogging': allowAnonLogging,
-				'contentVersion': contentVersion,
-				'panelizationSummary': panelizationSummary?.toJson(),
-				'imageLinks': imageLinks?.toJson(),
-				'language': language,
-				'previewLink': previewLink,
-				'infoLink': infoLink,
-				'canonicalVolumeLink': canonicalVolumeLink,
-			};
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'authors': authors,
+        'publisher': publisher,
+        'publishedDate': publishedDate,
+        'description': description,
+        'industryIdentifiers':
+            industryIdentifiers?.map((e) => e.toJson()).toList(),
+        'readingModes': readingModes?.toJson(),
+        'pageCount': pageCount,
+        'printType': printType,
+        'categories': categories,
+        'maturityRating': maturityRating,
+        'allowAnonLogging': allowAnonLogging,
+        'contentVersion': contentVersion,
+        'panelizationSummary': panelizationSummary?.toJson(),
+        'imageLinks': imageLinks.toJson(),
+        'language': language,
+        'previewLink': previewLink,
+        'infoLink': infoLink,
+        'canonicalVolumeLink': canonicalVolumeLink,
+        'averageRating': averageRating, // إضافة إلى الـ JSON
+        'ratingsCount': ratingsCount, // إضافة إلى الـ JSON
+      };
 
-	@override
-	List<Object?> get props {
-		return [
-				title,
-				authors,
-				publisher,
-				publishedDate,
-				description,
-				industryIdentifiers,
-				readingModes,
-				pageCount,
-				printType,
-				categories,
-				maturityRating,
-				allowAnonLogging,
-				contentVersion,
-				panelizationSummary,
-				imageLinks,
-				language,
-				previewLink,
-				infoLink,
-				canonicalVolumeLink,
-		];
-	}
+  @override
+  List<Object?> get props {
+    return [
+      title,
+      authors,
+      publisher,
+      publishedDate,
+      description,
+      industryIdentifiers,
+      readingModes,
+      pageCount,
+      printType,
+      categories,
+      maturityRating,
+      allowAnonLogging,
+      contentVersion,
+      panelizationSummary,
+      imageLinks,
+      language,
+      previewLink,
+      infoLink,
+      canonicalVolumeLink,
+      averageRating, // إضافة إلى props
+      ratingsCount, // إضافة إلى props
+    ];
+  }
 }

@@ -7,12 +7,13 @@ import 'package:bookly_app/core/resources/color_manger.dart';
 import 'package:bookly_app/core/resources/font_manger.dart';
 import 'package:bookly_app/core/resources/styles_manger.dart';
 import 'package:bookly_app/core/resources/values_manger.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart'; // Import the BookModel class
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  final BookModel book; // تحتاج إلى تمرير BookModel هنا
+
+  const BookDetailsViewBody({super.key, required this.book}); // تأكد من أن BookModel يتم تمريره
 
   @override
   Widget build(BuildContext context) {
@@ -24,52 +25,57 @@ class BookDetailsViewBody extends StatelessWidget {
             const CustomBookinDetailsAppBar(),
             Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .2,
-                  right: MediaQuery.of(context).size.width * .2,
-                  top: 20,
-                  bottom: 20),
-              child: const CustomBookItem(urlImage: "https://th.bing.com/th/id/R.39a0d647e1758c3224143ee90d78c07d?rik=c1tD2Y5XzA0Eaw&pid=ImgRaw&r=0",),
+                left: MediaQuery.of(context).size.width * .2,
+                right: MediaQuery.of(context).size.width * .2,
+                top: 20,
+                bottom: 20,
+              ),
+              child: CustomBookItem(
+                urlImage: book.volumeInfo.imageLinks.thumbnail, // استخدم صورة الكتاب هنا
+              ),
             ),
             Text(
-              "The Jungle Book",
+              textAlign: TextAlign.center, 
+              book.volumeInfo.title, // استخدم عنوان الكتاب
               style: getSemiBoldStyle(
-                  color: ColorManger.white,
-                  fontFamily: FontConstant.gT_Sectra_Fine,
-                  fontSize: FontSize.size30),
+                color: ColorManger.white,
+                fontFamily: FontConstant.gT_Sectra_Fine,
+                fontSize: FontSize.size30,
+              ),
             ),
-            const SizedBox(
-              height: 3,
-            ),
+            const SizedBox(height: 3),
             Text(
-              "Rudyard Kipling",
+             textAlign: TextAlign.center, 
+
+              book.volumeInfo.authors.join(', '), // استخدم مؤلفي الكتاب
               style: getSemiBoldStyle(
-                  color: ColorManger.grey1,
-                  fontFamily: FontConstant.montserrat,
-                  fontSize: FontSize.size20,
-                  fontStyle: FontStyle.italic),
+                color: ColorManger.grey1,
+                fontFamily: FontConstant.montserrat,
+                fontSize: FontSize.size16,
+                fontStyle: FontStyle.italic,
+              ),
             ),
-            const SizedBox(
-              height: 10,
+            
+             BookingRate(
+               rating: book.volumeInfo.ratingsCount ?? 0,
+                     count:book.volumeInfo.ratingsCount ?? 0, 
             ),
-            const BookingRate(),
-            const SizedBox(
-              height: AppSize.s20,
-            ),
+            const SizedBox(height: AppSize.s20),
             const BooksAction(),
-            const SizedBox(
-              height: AppSize.s40,
-            ),
-             Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "You can also like", style:  getSemiBoldStyle(
+            const SizedBox(height: AppSize.s40),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "You can also like",
+                style: getSemiBoldStyle(
                   color: ColorManger.white,
                   fontFamily: FontConstant.montserrat,
                   fontSize: FontSize.size16,
-                 ), 
-                )),
-               const SizedBox(height: 15,), 
-          const  DetialListViewItem()
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            DetialListViewItem(books: book), // تمرير الكتاب إلى DetialListViewItem
           ],
         ),
       ),

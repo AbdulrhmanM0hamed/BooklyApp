@@ -5,8 +5,9 @@ import 'package:bookly_app/core/resources/values_manger.dart';
 
 import 'package:flutter/material.dart';
 class BookingRate extends StatelessWidget {
-  const BookingRate({super.key});
-
+  const BookingRate({super.key , required this.rating , required this.count});
+     final int rating ; 
+     final int count ; 
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,15 +22,15 @@ class BookingRate extends StatelessWidget {
           width: 5,
         ),
         Text(
-          "4.8",
+         " $rating",
           style: getBoldStyle(
-              fontSize: FontSize.size20,
+              fontSize: FontSize.size16,
               color: ColorManger.white,
               fontFamily: FontConstant.montserrat),
         ),
       const  SizedBox(width: AppMargin.m5,),
         Text(
-          "(2390)",
+          "$count",
           style: getSemiBoldStyle(
               fontSize: FontSize.size16,
               color: ColorManger.grey1,
