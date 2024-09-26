@@ -15,7 +15,7 @@ class BestSallerListView extends StatelessWidget {
           return ListView.builder(
             physics: const NeverScrollableScrollPhysics(), // Avoid if you want scrollability
             shrinkWrap: true, // Important if you have ListView inside another scrollable widget
-            itemCount: state.books.length,
+            itemCount: 10,
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(
                   vertical: 10, horizontal: AppPadding.p20),

@@ -6,8 +6,8 @@ import 'package:bookly_app/core/resources/values_manger.dart';
 import 'package:flutter/material.dart';
 class BookingRate extends StatelessWidget {
   const BookingRate({super.key , required this.rating , required this.count});
-     final int rating ; 
-     final int count ; 
+     final num rating ; 
+     final num count ; 
   @override
   Widget build(BuildContext context) {
     return Row(

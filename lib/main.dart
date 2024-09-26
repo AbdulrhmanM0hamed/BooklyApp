@@ -1,6 +1,7 @@
 import 'package:bookly_app/Features/home/data/models/book_model/repos/home%20repo_impl.dart';
 import 'package:bookly_app/Features/home/presentation/view_models/cubit/feature_books/feature_books_cubit.dart';
 import 'package:bookly_app/Features/home/presentation/view_models/cubit/newest_books/newest_books_cubit.dart';
+import 'package:bookly_app/Features/home/presentation/view_models/cubit/similar_books/similar_cubit.dart';
 import 'package:bookly_app/core/resources/route_manger.dart';
 import 'package:bookly_app/core/resources/theme_manger.dart';
 import 'package:bookly_app/core/utils/service_locator.dart';
@@ -30,6 +31,14 @@ class MyApp extends StatelessWidget {
             getIt.get<HomeRepoImpl>()
 
           ),
+           
+        ) , 
+        BlocProvider(
+          create: (context) => SimilarCubit(
+            getIt.get<HomeRepoImpl>()
+
+          ),
+           
         )
       ],
       child: MaterialApp.router(

@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
       height: 50,
       child: TextButton( onPressed: () {}, 
       style: TextButton.styleFrom(backgroundColor: backgroundColor , shape: RoundedRectangleBorder(borderRadius:borderRadius ?? BorderRadius.circular(AppSize.s16)) ),
-       child:  Text(titlebutton , style: getSemiBoldStyle(  color: textcolor, fontFamily: FontConstant.montserrat , fontSize: FontSize.size20)) ,
+       child:  Text(titlebutton , style: getBoldStyle(  color: textcolor, fontFamily: FontConstant.montserrat , fontSize: FontSize.size20)) ,
       ),
     );
   }

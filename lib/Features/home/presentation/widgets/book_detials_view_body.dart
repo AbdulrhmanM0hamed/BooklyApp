@@ -1,3 +1,4 @@
+import 'package:bookly_app/Features/home/presentation/view_models/cubit/similar_books/similar_cubit.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/booking_rate.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/books_actions.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/custom_bookin_details_appbar.dart';
@@ -8,7 +9,9 @@ import 'package:bookly_app/core/resources/font_manger.dart';
 import 'package:bookly_app/core/resources/styles_manger.dart';
 import 'package:bookly_app/core/resources/values_manger.dart';
 import 'package:flutter/material.dart';
-import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart'; // Import the BookModel class
+import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; // Import the BookModel class
 
 class BookDetailsViewBody extends StatelessWidget {
   final BookModel book; // تحتاج إلى تمرير BookModel هنا
@@ -17,6 +20,13 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+final category = book.volumeInfo.categories?.isNotEmpty == true
+    ? book.volumeInfo.categories!.first
+    : null;
+
+if (category != null) {
+  context.read<SimilarCubit>().fetchSimilarBooks(category);
+}
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
@@ -57,12 +67,12 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             
              BookingRate(
-               rating: book.volumeInfo.ratingsCount ?? 0,
+               rating: book.volumeInfo.averageRating ?? 0,
                      count:book.volumeInfo.ratingsCount ?? 0, 
             ),
             const SizedBox(height: AppSize.s20),
-            const BooksAction(),
-            const SizedBox(height: AppSize.s40),
+             BooksAction(bookModel: book,),
+            const SizedBox(height: AppSize.s24),
             Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -74,8 +84,12 @@ class BookDetailsViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
-            DetialListViewItem(books: book), // تمرير الكتاب إلى DetialListViewItem
+           const SizedBox(height: AppSize.s8),
+
+            AspectRatio(
+              aspectRatio: 4 / 1.7, // Set your desired aspect ratio here
+              child: DetialListViewItem(books: book),
+            ), // تمرير الكتاب إلى DetialListViewItem
           ],
         ),
       ),

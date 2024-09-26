@@ -13,7 +13,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failuer, List<BookModel>>> fetchFutureBooks() async {
 try {
-      final data = await apiService.get(endpoint: 'volumes?q=subject:programming&filtering=free-ebooks');
+      final data = await apiService.get(endpoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
       if (data['items'] != null) {
         List<BookModel> books = (data['items'] as List).map((item) => BookModel.fromJson(item)).toList();
         return Right(books);
@@ -32,7 +32,7 @@ try {
   @override
   Future<Either<Failuer, List<BookModel>>> fetchNewestBooks() async {
     try {
-      final data = await apiService.get(endpoint: 'volumes?q=subject:programming&filtering=free-ebooks');
+      final data = await apiService.get(endpoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=computer science');
       if (data['items'] != null) {
         List<BookModel> books = (data['items'] as List).map((item) => BookModel.fromJson(item)).toList();
         return Right(books);
@@ -46,6 +46,28 @@ try {
     }
     return Left(ServerFailure(errMessage: "Unexpected Error"));
 
+  }
+  
+
+
+  @override
+  Future<Either<Failuer, List<BookModel>>> fetchSimialrBooks(String category) async {
+
+     try {
+      final data = await apiService.get(endpoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=programming');
+      if (data['items'] != null) {
+        List<BookModel> books = (data['items'] as List).map((item) => BookModel.fromJson(item)).toList();
+        return Right(books);
+      } else {
+        return Left(ServerFailure(errMessage: "Something Error"));
+      }
+    } catch (e) {
+      if (e is DioException){
+          return Left(ServerFailure.fromDioError(e));
+      }
+    }
+    return Left(ServerFailure(errMessage: "Unexpected Error"));
+   
   }
   
  

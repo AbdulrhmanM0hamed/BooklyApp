@@ -57,7 +57,7 @@ class BestSallerListViewItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "19.99 €",
+                      "Free",
                       style: getBoldStyle(
                           fontSize: FontSize.size20,
                           color: ColorManger.white,
